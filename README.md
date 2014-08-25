@@ -43,3 +43,4 @@ A-minus Grade: Gill Sans isn’t a default font on Windows as far as I know.
 ## To Do
 
 * Internationalization (i18n)
+* Mobile testing
