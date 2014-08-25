@@ -1,0 +1,45 @@
+<!doctype html>
+<html class="w3c-b cr" lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<link rel="stylesheet" href="banners.css">
+	<style>
+	body {
+		max-width: 600px;
+		margin: 0 auto;
+		padding: 3em;
+		font-family: sans-serif;
+	}
+	label {
+		display: block;
+		padding: .3em;
+	}
+	.w3c-custom {
+		left: 1.5em;
+	}
+	</style>
+</head>
+<body>
+	<div class="w3c-custom green" contenteditable>W3C Inebriated Napkin Sketch</div>
+
+	<label><input type="radio" name="banner" value="ud"> Unofficial Draft</label>
+	<label><input type="radio" name="banner" value="wd"> W3C Working Draft</label>
+	<label><input type="radio" name="banner" value="cr" checked> W3C Candidate Recommendation</label>
+	<label><input type="radio" name="banner" value="pr"> W3C Proposed Recommendation</label>
+	<label><input type="radio" name="banner" value="r"> W3C Recommendation</label>
+	<label><input type="radio" name="banner" value="wgn"> W3C Working Group Note</label>
+	<label><input type="radio" name="banner" value="ign"> W3C Interest Group Note</label>
+	<script>
+	var els = document.getElementsByTagName( "input" );
+	for( var j = 0, k = els.length; j < k; j++ ) {
+		els[ j ].addEventListener( "change", function() {
+			if( this.checked ) {
+				document.documentElement.className = "w3c-b " + this.value;
+			}
+		}, false );
+	}
+	</script>
+</body>
+</html>
