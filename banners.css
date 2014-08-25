@@ -47,6 +47,15 @@
 	.w3c-custom.green,
 	.w3c-b.ud:before {
 		background: #00a400;
+	}
+	.w3c-b.ud:before {
 		content: "Unofficial Draft";
+	}
+	.w3c-custom.red,
+	.w3c-b.ed:before {
+		background: #ff0000;
+	}
+	.w3c-b.ed:before {
+		content: "W3C Editor’s Draft";
 	}
 }
