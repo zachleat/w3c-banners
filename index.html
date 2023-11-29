@@ -1,51 +1,61 @@
 <!doctype html>
-<html class="w3c-b cr" lang="en">
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title></title>
-	<link rel="stylesheet" href="banners.css">
-	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300">
+	<title>W3C Banner Web Component</title>
 	<style>
 	body {
-		max-width: 600px;
+		max-width: 37.5em;
 		margin: 0 auto;
 		padding: 3em;
-		font-family: sans-serif;
+		font-family: system-ui, sans-serif;
 	}
 	label {
 		display: block;
 		padding: .3em;
 	}
-	.w3c-custom {
-		left: 1.5em;
-	}
 	</style>
+	<script type="module" src="w3c-banner.js"></script>
 </head>
 <body>
-	<div class="w3c-custom green" contenteditable>Paper Napkin Sketch</div>
+	<h1>W3C Specification Banner Web Component</h1>
 
-	<p><a href="https://github.com/zachleat/w3c-banners">See it on GitHub.</a></p>
+	<!-- Use `text` attribute if you don’t want fallback text. -->
+	<!-- Use light DOM if you do want fallback text. -->
+	<!-- <w3c-banner text="This works if you don’t want no-JS fallback text.">This overrides the text attribute</w3c-banner> -->
 
-	<label><input type="radio" name="banner" value="ud"> Unofficial Draft</label>
-	<label><input type="radio" name="banner" value="wd"> W3C Working Draft</label>
-	<label><input type="radio" name="banner" value="cr" checked> W3C Candidate Recommendation</label>
-	<label><input type="radio" name="banner" value="pr"> W3C Proposed Recommendation</label>
-	<label><input type="radio" name="banner" value="per"> W3C Proposed Edit Recommendation</label>
-	<label><input type="radio" name="banner" value="r"> W3C Recommendation</label>
-	<label><input type="radio" name="banner" value="cgn"> W3C Note</label>
-	<label><input type="radio" name="banner" value="cgn"> W3C Coordination Group Note</label>
-	<label><input type="radio" name="banner" value="wgn"> W3C Working Group Note</label>
-	<label><input type="radio" name="banner" value="ign"> W3C Interest Group Note</label>
-	<label><input type="radio" name="banner" value="lcwd"> W3C Last Call Working Draft</label>
-	<label><input type="radio" name="banner" value="ed"> W3C Editor’s Draft</label>
-	<label><input type="radio" name="banner" value="rr"> W3C Rescinded Recommendation</label>
+	<!-- Set your own color -->
+	<!-- <w3c-banner style="--wb-color: orange"></w3c-banner> -->
+
+	<!-- Use a predefined color (red, green, blue, black) -->
+	<w3c-banner text="W3C Candidate Recommendation" color="blue"></w3c-banner>
+
+	<p><a href="https://github.com/zachleat/w3c-banners">Source code on GitHub.</a></p>
+
+	<label><input type="radio" name="banner" value="red"> Unsanctioned Web Standards Fan Fiction</label>
+	<label><input type="radio" name="banner" value="green"> Unofficial Draft</label>
+	<label><input type="radio" name="banner" value="blue"> W3C Working Draft</label>
+	<label><input type="radio" name="banner" value="blue" checked> W3C Candidate Recommendation</label>
+	<label><input type="radio" name="banner" value="blue"> W3C Proposed Recommendation</label>
+	<label><input type="radio" name="banner" value="blue"> W3C Proposed Edit Recommendation</label>
+	<label><input type="radio" name="banner" value="blue"> W3C Recommendation</label>
+	<label><input type="radio" name="banner" value="blue"> W3C Note</label>
+	<label><input type="radio" name="banner" value="blue"> W3C Coordination Group Note</label>
+	<label><input type="radio" name="banner" value="blue"> W3C Working Group Note</label>
+	<label><input type="radio" name="banner" value="blue"> W3C Interest Group Note</label>
+	<label><input type="radio" name="banner" value="blue"> W3C Last Call Working Draft</label>
+	<label><input type="radio" name="banner" value="red"> W3C Editor’s Draft</label>
+	<label><input type="radio" name="banner" value="black"> W3C Rescinded Recommendation</label>
 	<script>
-	var els = document.getElementsByTagName( "input" );
-	for( var j = 0, k = els.length; j < k; j++ ) {
+	let els = document.getElementsByTagName( "input" );
+	let banner = document.getElementsByTagName( "w3c-banner" )[0];
+
+	for( let j = 0, k = els.length; j < k; j++ ) {
 		els[ j ].addEventListener( "change", function() {
-			if( this.checked ) {
-				document.documentElement.className = "w3c-b " + this.value;
+			if( this.checked && banner ) {
+				banner.innerHTML = this.parentNode.innerText;
+				banner.setAttribute("color", this.value);
 			}
 		}, false );
 	}

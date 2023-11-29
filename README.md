@@ -2,44 +2,35 @@
 
 ## [Demo](http://zachleat.github.io/w3c-banners/)
 
-## Includes 
-
-* Unofficial Draft
-* W3C Working Draft
-* W3C Candidate Recommendation
-* W3C Proposed Recommendation
-* W3C Recommendation
-* W3C Working Group Note
-* W3C Interest Group Note
-* W3C Editor’s Draft
-
 ## Usage
 
-Add a `w3c-b` class to your `<html>` tag and one of: `wd`, `cr`, `pr`, `r`, `wgn`, `ign`, `ed`.
+First include `<script type="module" src="w3c-banner.js"></script>` on your page.
 
-Example: `<html class="w3c-b pr">` for W3C Proposed Recommendation.
-
-### Custom Text
-
-To add your own custom text, insert your own element instead of using the `w3c-b` class:
-
+```html
+<w3c-banner text="W3C Candidate Recommendation"></w3c-banner>
+<w3c-banner text="Unofficial Draft" color="green"></w3c-banner>
 ```
-<!-- Default is blue -->
-<div class="w3c-custom">Paper Napkin Sketch</div>
-<div class="w3c-custom green">Thought Leadership</div>
-<div class="w3c-custom red">Bifocal Specification</div>
+
+### Content
+
+```html
+<w3c-banner text="This works if you don’t want no-JS fallback text.">This overrides the text attribute</w3c-banner>
+```
+
+### Color
+
+```html
+<!-- Use a predefined color, one of: red, green, blue (default), black -->
+<w3c-banner text="W3C Candidate Recommendation" color="blue"></w3c-banner>
+
+<!-- Override -->
+<w3c-banner style="--wb-color: orange"></w3c-banner>
 ```
 
 ## Compatibility
 
-Cuts the mustard on media query support (`@media only all`). Requires CSS 2D transforms.
-
-A-Grade: Chrome, Opera, Safari, Firefox, IE9+, Android 2.3+. Anything that supports [CSS 2D Transforms](http://caniuse.com/#feat=transforms2d).
-
-A-minus Grade: Gill Sans isn’t a default font on Windows as far as I know.
+* A Grade: Cuts the mustard on [`CSSStyleSheet#replaceSync`](https://caniuse.com/mdn-api_cssstylesheet_replacesync).
+* A-minus Grade: Gill Sans isn’t a default font on Windows as far as I know.
+* Fallback: No content, no visual impact.
 
 ## [MIT License](LICENSE)
-
-## To Do
-
-* Internationalization (i18n)

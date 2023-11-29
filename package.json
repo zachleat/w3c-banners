@@ -1,0 +1,26 @@
+{
+  "name": "@zachleat/w3c-banner",
+  "version": "1.0.0",
+  "description": "A W3C Specification banner web component.",
+  "main": "w3c-banner.js",
+  "scripts": {
+    "start": "npx http-server ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zachleat/w3c-banners.git"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/zachleat/w3c-banners/issues"
+  },
+  "author": {
+    "name": "Zach Leatherman",
+    "email": "zachleatherman@gmail.com",
+    "url": "https://zachleat.com/"
+  },
+  "homepage": "https://github.com/zachleat/w3c-banners#readme"
+}
