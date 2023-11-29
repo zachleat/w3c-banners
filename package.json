@@ -1,6 +1,6 @@
 {
   "name": "@zachleat/w3c-banner",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A W3C Specification banner web component.",
   "main": "w3c-banner.js",
   "scripts": {
