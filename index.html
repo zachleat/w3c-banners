@@ -33,32 +33,49 @@
 
 	<p><a href="https://github.com/zachleat/w3c-banners">Source code on GitHub.</a></p>
 
-	<label><input type="radio" name="banner" value="red"> Unsanctioned Web Standards Fan Fiction</label>
-	<label><input type="radio" name="banner" value="green"> Unofficial Draft</label>
-	<label><input type="radio" name="banner" value="blue"> W3C Working Draft</label>
-	<label><input type="radio" name="banner" value="blue" checked> W3C Candidate Recommendation</label>
-	<label><input type="radio" name="banner" value="blue"> W3C Proposed Recommendation</label>
-	<label><input type="radio" name="banner" value="blue"> W3C Proposed Edit Recommendation</label>
-	<label><input type="radio" name="banner" value="blue"> W3C Recommendation</label>
-	<label><input type="radio" name="banner" value="blue"> W3C Note</label>
-	<label><input type="radio" name="banner" value="blue"> W3C Coordination Group Note</label>
-	<label><input type="radio" name="banner" value="blue"> W3C Working Group Note</label>
-	<label><input type="radio" name="banner" value="blue"> W3C Interest Group Note</label>
-	<label><input type="radio" name="banner" value="blue"> W3C Last Call Working Draft</label>
-	<label><input type="radio" name="banner" value="red"> W3C Editor’s Draft</label>
-	<label><input type="radio" name="banner" value="black"> W3C Rescinded Recommendation</label>
+	<form>
+		<label><input type="radio" name="banner" value="red"> Unsanctioned Web Standards Fan Fiction</label>
+		<label><input type="radio" name="banner" value="green"> Unofficial Draft</label>
+		<label><input type="radio" name="banner" value="blue"> W3C Working Draft</label>
+		<label><input type="radio" name="banner" value="blue" checked> W3C Candidate Recommendation</label>
+		<label><input type="radio" name="banner" value="blue"> W3C Proposed Recommendation</label>
+		<label><input type="radio" name="banner" value="blue"> W3C Proposed Edit Recommendation</label>
+		<label><input type="radio" name="banner" value="blue"> W3C Recommendation</label>
+		<label><input type="radio" name="banner" value="blue"> W3C Note</label>
+		<label><input type="radio" name="banner" value="blue"> W3C Coordination Group Note</label>
+		<label><input type="radio" name="banner" value="blue"> W3C Working Group Note</label>
+		<label><input type="radio" name="banner" value="blue"> W3C Interest Group Note</label>
+		<label><input type="radio" name="banner" value="blue"> W3C Last Call Working Draft</label>
+		<label><input type="radio" name="banner" value="red"> W3C Editor’s Draft</label>
+		<label><input type="radio" name="banner" value="black"> W3C Rescinded Recommendation</label>
+		<fieldset>
+			<legend>Override</legend>
+			<label>Color: <input type="color"></label>
+		</fieldset>
+	</form>
 	<script>
-	let els = document.getElementsByTagName( "input" );
 	let banner = document.getElementsByTagName( "w3c-banner" )[0];
+	let customColor = document.querySelector(`input[type="color"]`);
 
-	for( let j = 0, k = els.length; j < k; j++ ) {
-		els[ j ].addEventListener( "change", function() {
+	Array.from(document.querySelectorAll( `input[type="radio"]` )).forEach(radio => {
+		radio.addEventListener( "change", function() {
 			if( this.checked && banner ) {
 				banner.innerHTML = this.parentNode.innerText;
+
+				banner.style.setProperty("--wb-color", "");
 				banner.setAttribute("color", this.value);
+
+				// Reset custom
+				customColor.value = "";
 			}
 		}, false );
-	}
+	});
+
+	customColor.addEventListener("input", function() {
+		if(this.value && banner) {
+			banner.style.setProperty("--wb-color", this.value);
+		}
+	});
 	</script>
 </body>
 </html>

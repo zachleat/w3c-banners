@@ -28,13 +28,13 @@ class W3CBanner extends HTMLElement {
 	transform: translateY(20em) rotate(270deg);
 }
 :host([color="green"]) {
-	--_wb-color: #00a400;
+	--wb-color: #00a400;
 }
 :host([color="red"]) {
-	--_wb-color: #ff0000;
+	--wb-color: #ff0000;
 }
 :host([color="black"]) {
-	--_wb-color: #000;
+	--wb-color: #000;
 }
 `;
 
